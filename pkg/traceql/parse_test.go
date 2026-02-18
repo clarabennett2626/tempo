@@ -1777,3 +1777,20 @@ func TestParseRewrites(t *testing.T) {
 		})
 	}
 }
+
+func TestIncomplete(t *testing.T) {
+	tests := []struct {
+		in       string
+	}{
+		{in: "{ .foo = `bar` || .foo = }"},
+		{in: "{ .foo = `bar` || .foo = "},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.in, func(t *testing.T) {
+			_, err := Parse(tc.in)
+
+			require.NoError(t, err)
+		})
+	}
+}
