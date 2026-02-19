@@ -1780,7 +1780,7 @@ func TestParseRewrites(t *testing.T) {
 
 func TestIncomplete(t *testing.T) {
 	tests := []struct {
-		in       string
+		in string
 	}{
 		{in: "{ .foo = `bar` || .foo = }"},
 		{in: "{ .foo = `bar` || .foo = "},
